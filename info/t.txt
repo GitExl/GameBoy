@@ -1,0 +1,7 @@
+If HALT state was launched while IME = 0 and (register_IF & register_IE & 0x1F), PC.W is not incremented for the first byte of the next instruction.
+
+If you set a sprite & it's priority to appear below the background & the window, you can see the sprite under window colo(u)r 0 but you can't see the background under window colo(u)r 0. It is as if the window has replaced the background at all points that it appears on screen.
+
+An LYC interrupt occurs at the start of mode 2. An H-Blank interrupt occurs at the start of mode 0.
+
+There is one Int $48 signal. When this signal goes from "off" to "on" the LCDC flag in the register IF ($ff0f) gets set, and ONLY on off-to-on transitions. If the signal is already "on", say by a true (and enabled) LYC=LY condition, then a further interrupt in the same line (say HBLANK int is enabled as well) would set the int48 signal as well, but it's already set so no off-to-on transition, no further interrupt generated. But the HBLANK interrupt could occur if LYC=LY would get disabled or false (lyc changed) within the line, ie. if int48 signal gets off for a short moment. (Info from M.K.)
