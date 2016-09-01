@@ -222,3 +222,4 @@ bin/roms/
 *.exe
 gmon.out
 *.dll
+info
